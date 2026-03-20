@@ -20,19 +20,19 @@ const fontMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: `${personalInfo.name} — Frontend Developer`,
-  description: `Portfolio of ${personalInfo.name}, a Frontend Developer specializing in architecting complex web systems and deep user experience optimization.`,
+  description: `Portafolio of ${personalInfo.name}, a Frontend Developer specializing in architecting complex web systems and deep user experience optimization.`,
   keywords: [
     "Frontend Developer",
     "React",
     "Next.js",
     "TypeScript",
-    "Portfolio",
+    "Portafolio",
     "Dang Minh Khoi",
   ],
   authors: [{ name: personalInfo.name }],
   openGraph: {
     title: `${personalInfo.name} — Frontend Developer`,
-    description: `Portfolio of ${personalInfo.name}`,
+    description: `Portafolio of ${personalInfo.name}`,
     type: "website",
   },
 }

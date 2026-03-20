@@ -39,7 +39,7 @@ const metaItems = [
   },
   {
     icon: Link2,
-    label: "Portfolio",
+    label: "Portafolio",
     value: personalInfo.website!,
     href: personalInfo.website!,
   },

@@ -9,7 +9,7 @@ export const personalInfo = {
     "https://www.linkedin.com/in/%C4%91%E1%BA%B7ng-minh-kh%C3%B4i-b41391342/",
   location: "Can Tho, Vietnam",
   pronouns: "he/him",
-  website: process.env.NEXT_PUBLIC_PORTFOLIO,
+  website: process.env.NEXT_PUBLIC_PORTAFOLIO,
   avatar: "/avatar.jpg",
   initials: "MK",
 }

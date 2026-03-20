@@ -59,7 +59,7 @@ export default function RootLayout({
           <ScrollArea className="h-screen">
             <div className="relative min-h-screen bg-background">
               <div className="h-full w-full">
-                <Meteors number={40} />
+                <Meteors number={30} />
               </div>
               <GridBackground />
               <div className="relative z-10 flex flex-col items-center justify-center">

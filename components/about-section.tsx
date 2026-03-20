@@ -1,14 +1,52 @@
-import { Badge } from "@/components/ui/badge"
+"use client"
 import { FadeReveal } from "@/components/ui/fade-reveal"
-import { certifications, skills } from "@/lib/data"
+import { OrbitingCircles } from "@/components/ui/orbiting-circles"
+import { certifications } from "@/lib/data"
 import { Award, CheckCircle2 } from "lucide-react"
+import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
 import Section from "./ui/section"
 const abouts = [
   "Skilled in Next.js, React, TypeScript, and modern front-end technologies; building high-quality, user-centric web and mobile applications.",
   "Passionate about exploring new technologies and turning ideas into reality through polished, thoughtfully crafted personal projects.",
   "Strong eye for pixel-perfect UI and seamless UX detail.",
 ]
+const mainTechs = ["react", "nextjs", "ts", "tailwind", "vite", "shadcn"]
+const otherTechs = [
+  "redux",
+  "zustand",
+  "nestjs",
+  "supabase",
+  "postgres",
+  "github",
+  "docker",
+  "flutter",
+  "vercel",
+  "antdesign",
+  "firebase",
+]
 export function AboutSection() {
+  const [radius, setRadius] = useState({ inner: 80, outer: 140 })
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setRadius({ inner: 60, outer: 110 })
+      } else {
+        setRadius({ inner: 80, outer: 160 })
+      }
+    }
+
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  const iconTheme = mounted && resolvedTheme === "dark" ? "dark" : "light"
+
   return (
     <Section id="about">
       <FadeReveal>
@@ -34,32 +72,43 @@ export function AboutSection() {
       </FadeReveal>
 
       {/* Skills */}
-      <div className="mt-10">
-        <FadeReveal>
-          <SectionHeading label="Skills" />
-        </FadeReveal>
-        <div className="mt-6 space-y-4">
-          {Object.entries(skills).map(([category, items], idx) => (
-            <FadeReveal key={category} delay={0.05 * idx}>
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-start">
-                <span className="w-24 shrink-0 font-mono text-xs font-semibold text-foreground">
-                  {category}
-                </span>
-                <div className="flex flex-wrap gap-1.5">
-                  {items.map((skill) => (
-                    <Badge
-                      key={skill}
-                      variant="secondary"
-                      className="font-mono text-xs font-normal transition-all hover:bg-accent hover:text-foreground"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            </FadeReveal>
+      <div className="relative flex h-[300px] w-full flex-col items-center justify-center overflow-hidden md:h-[500px]">
+        {/* Inner Circle (Core Frontend) */}
+        <OrbitingCircles
+          className="size-10 border-none bg-transparent md:size-12"
+          duration={20}
+          radius={radius.inner}
+          iconSize={40}
+        >
+          {mainTechs.map((tech, i) => (
+            <div className="size-10" key={`${tech}-${iconTheme}`}>
+              <img
+                key={i}
+                src={`https://go-skill-icons.vercel.app/api/icons?i=${tech}&theme=${iconTheme}`}
+                alt={tech}
+              />
+            </div>
           ))}
-        </div>
+        </OrbitingCircles>
+
+        {/* Middle Circle (Systems & Tools) */}
+        <OrbitingCircles
+          className="size-10 border-none bg-transparent md:size-12"
+          duration={25}
+          radius={radius.outer}
+          reverse
+          iconSize={40}
+        >
+          {otherTechs.map((tech, i) => (
+            <div className="size-10" key={`${tech}-${iconTheme}`}>
+              <img
+                src={`https://go-skill-icons.vercel.app/api/icons?i=${tech}&theme=${iconTheme}`}
+                alt={tech}
+                className="h-full w-full"
+              />
+            </div>
+          ))}
+        </OrbitingCircles>
       </div>
 
       {/* Certifications */}

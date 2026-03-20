@@ -115,13 +115,19 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.1 }}
-              className="w-10"
+              className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg"
             >
               <a
                 href="#home"
-                className="font-press-start text-lg font-bold tracking-tighter text-foreground transition-opacity hover:opacity-70"
+                className="flex items-center justify-center transition-opacity hover:opacity-70"
               >
-                MK
+                <Image
+                  src="/favicon-32x32.png"
+                  alt="MK Logo"
+                  width={32}
+                  height={32}
+                  className="rounded-sm"
+                />
               </a>
             </motion.div>
           )}

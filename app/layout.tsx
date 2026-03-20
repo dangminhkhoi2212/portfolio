@@ -98,6 +98,11 @@ export const metadata: Metadata = {
     google: "google-site-verification-placeholder", // User should replace this
   },
   category: "technology",
+  icons: {
+    icon: "/favicon-32x32.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 }
 
 export default function RootLayout({
@@ -144,17 +149,13 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <SpotlightBackground />
-          <ScrollArea className="h-screen">
-            <div className="relative min-h-screen bg-background">
-              <div className="h-full w-full">
-                <Meteors number={30} />
-              </div>
-              <GridBackground />
-              <div className="relative z-10 flex flex-col items-center justify-center">
-                <Navbar />
-                {children}
-                <Footer />
-              </div>
+          <Navbar />
+          <ScrollArea className="h-screen w-full">
+            <Meteors number={30} />
+            <GridBackground />
+            <div className="relative z-10 flex flex-col items-center justify-center">
+              {children}
+              <Footer />
             </div>
           </ScrollArea>
         </ThemeProvider>

@@ -7,7 +7,7 @@ import DividerPattern from "@/components/ui/divider-pattern"
 
 export default function Page() {
   return (
-    <main className="flex w-full flex-col items-center">
+    <main className="flex w-full flex-col items-center overflow-x-hidden">
       <HeroSection />
       <DividerPattern />
 

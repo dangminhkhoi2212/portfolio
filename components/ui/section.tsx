@@ -6,7 +6,7 @@ const Section: React.FC<Props> = ({ children, className, ...props }) => {
   return (
     <div
       className={cn(
-        "w-full border-x border-border px-6 py-12 md:max-w-3xl",
+        "w-full border-x border-border px-4 py-12 md:max-w-3xl md:px-6",
         className
       )}
       {...props}

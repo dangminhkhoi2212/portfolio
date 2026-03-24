@@ -169,14 +169,16 @@ export function Navbar() {
 
         {/* Right controls */}
         <div className="flex items-center gap-1.5 sm:gap-2">
-          <Link
+          <a
             href={personalInfo.resumePath}
             download
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           >
             <Download className="h-3.5 w-3.5" />
             <span className="hidden sm:inline">Resume</span>
-          </Link>
+          </a>
           <Link
             href={personalInfo.github}
             target="_blank"

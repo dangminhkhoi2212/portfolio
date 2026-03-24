@@ -159,8 +159,8 @@ export default function RootLayout({
         />
       </head>
       <body className="flex h-screen w-screen flex-col overflow-hidden bg-background">
-        <Providers>
-          <ThemeProvider>
+        <ThemeProvider>
+          <Providers>
             <GridBackground />
             <ScrollArea className="relative h-full flex-1 overflow-x-hidden overflow-y-auto">
               <Navbar />
@@ -169,8 +169,8 @@ export default function RootLayout({
                 <Footer />
               </div>
             </ScrollArea>
-          </ThemeProvider>
-        </Providers>
+          </Providers>
+        </ThemeProvider>
       </body>
     </html>
   )

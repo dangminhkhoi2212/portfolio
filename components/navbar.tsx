@@ -2,8 +2,6 @@
 
 import { personalInfo } from "@/lib/data"
 import { cn } from "@/lib/utils"
-import { useMutation } from "@tanstack/react-query"
-import { saveAs } from "file-saver"
 import { Download, Github, Menu } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 import Image from "next/image"
@@ -98,17 +96,20 @@ export function Navbar() {
     setScrolled(true)
     setIsOpen(false)
   }
-  const { mutate: downloadResume, isPending: isDownloading } = useMutation({
-    mutationFn: async () => {
-      const response = await fetch(personalInfo.resumePath)
-      const blob = await response.blob()
+  const handleDownload = () => {
+    const link = document.createElement("a")
+    link.href = "/resume.pdf"
+    link.download = "Resume.pdf"
 
-      saveAs(blob, personalInfo.resumePath.split("/").pop() || "resume.pdf", {
-        autoBom: true,
-      })
-      return true
-    },
-  })
+    // Safari yêu cầu element phải thực sự tồn tại trong DOM để kích hoạt download
+    document.body.appendChild(link)
+    link.click()
+
+    // Xóa đi sau khi click để giữ DOM sạch
+    setTimeout(() => {
+      document.body.removeChild(link)
+    }, 100)
+  }
   return (
     <header
       className={cn(
@@ -180,9 +181,8 @@ export function Navbar() {
         {/* Right controls */}
         <div className="flex items-center gap-1.5 sm:gap-2">
           <Button
-            onClick={() => downloadResume()}
+            onClick={() => handleDownload()}
             variant={"ghost"}
-            disabled={isDownloading}
             className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           >
             <Download className="h-3.5 w-3.5" />

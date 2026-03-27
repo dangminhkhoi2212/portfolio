@@ -168,8 +168,7 @@ export function Navbar() {
         <div className="flex items-center gap-1.5 sm:gap-2">
           <a
             href={personalInfo.resumePath}
-            target="_blank"
-            download={personalInfo.resumePath}
+            download={personalInfo.resumePath.split("/").pop()}
             rel="noopener noreferrer external"
             className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           >

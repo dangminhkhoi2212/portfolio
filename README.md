@@ -34,6 +34,9 @@ I am a **Frontend Developer** with over 1 year of professional experience, speci
 ## 🌟 Featured Project: KDrago
 
 **Database Visualization Tool** | *Feb. 2026 – Present*
+
+💻 [Live Demo](https://k-drago.vercel.app)
+
 An intelligent database schema visualizer built with **Next.js**, **React Flow**, and **Vercel AI SDK**. It features a natural language SQL co-pilot and real-time state synchronization between the visual canvas and AI-driven migrations.
 
 ---
